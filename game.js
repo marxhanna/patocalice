@@ -10,7 +10,15 @@ loadRoot("https://i.imgur.com/")
 loadSprite('bloco', 'PaSFOFS.png')
 loadSprite('bg', '3Qz3emc.png')
 
-loadSprite("allan", "97h99vo.png")
+loadSprite("allan", "JnRGmn6.png", {
+    sliceX: 13,
+    anims: {
+        idle: {
+            from: 0,
+            to: 12,
+        },  
+    },
+});
 
 loadSprite("marina", "HCCKitc.png", {
     sliceX: 4,
@@ -22,7 +30,7 @@ loadSprite("marina", "HCCKitc.png", {
     },
 });
 
-loadSprite("guria", "lLh9pIE.png", {
+loadSprite("guria", "1QWW7YG.png", {
     sliceX: 8,
     anims: {
         idle: {
@@ -87,7 +95,10 @@ scene("game", () => {
     ]);
 
     const npc_allan = add([
-        sprite("allan"),
+        sprite("allan", {
+            animSpeed: 0.12,
+            frame: 0
+        }),
         solid(),
         body(),
         pos(80,0),
@@ -97,6 +108,9 @@ scene("game", () => {
         }
     ]);
 
+    npc_allan.flipX(true)
+    npc_allan.play('idle')
+    npc_marina.flipX(true)
     npc_marina.play('idle')
 
     keyDown('left', () => {
