@@ -23,7 +23,7 @@ loadSprite("marina", "HCCKitc.png", {
 });
 
 loadSprite("guria", "lLh9pIE.png", {
-    sliceX: 7.9,
+    sliceX: 8,
     anims: {
         idle: {
             from: 0,
@@ -40,33 +40,25 @@ loadSprite("guria", "lLh9pIE.png", {
 scene("game", () => {
     layers([
         "bg",
-        "game",
+        "obj",
         "ui",
-    ], "game");
+    ], "obj");
 
-    const maps = [
-        [
-            '                                     ', 
-            '                                     ',
-            '                                     ',
-            '                                     ',
-            '                                     ',
-            '                                     ',
-            '=====================================',
-        ]
-    ]
-
-    const levelCfg = {
+    addLevel([
+        '                                     ', 
+        '                                     ',
+        '                                     ',
+        '                                     ',
+        '                                     ',
+        '                                     ',
+        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    ], {
         width: 32,
         height: 32,
-        '=': [sprite('bloco'), solid()]
-    }
-
-    const gameLevel = addLevel(maps, levelCfg)
-
+        'x' : [sprite('bloco'), solid()]
+    })
 
     const player = add([
-        
         sprite("guria", {
             animSpeed: 0.1,
             frame: 0
